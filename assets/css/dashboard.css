@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8f9fa;
+}
+:root {
+  --primary-color: #092c4c;
+  --secondary-color: #f2994a;
+  --Info-color: #2f80ed;
+  --Success-color: #27ae60;
+  --Warning-color: #e2b93b;
+  --Error-color: #eb5757;
+  --sidebar-bg: #ffffff;
+  --content-bg: #f8fafc;
+  --white-color: #fff;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 70px;
+  background: var(--primary-color);
+  color: var(--white-color);
+  overflow: hidden;
+  z-index: 1000;
+  transition: width 0.3s, right 0.3s;
+}
+
+.sidebar:hover {
+  width: 220px;
+}
+
+.sidebar .logo {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.sidebar .logo img {
+  width: 40px;
+  transition: width 0.3s;
+  background-color: #f8f9fa;
+  border-radius: 50%;
+}
+
+.sidebar:hover .logo img {
+  width: 60px;
+}
+
+.sidebar .logo span {
+  display: block;
+  opacity: 0;
+  font-weight: bold;
+  margin-top: 10px;
+  color: var(--white-color);
+  font-size: 14px;
+  transition: opacity 0.3s;
+}
+
+.sidebar:hover .logo span,
+.sidebar.active .logo span {
+  opacity: 1;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 16px 0;
+}
+
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  color: var(--white-color);
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.sidebar ul li a i {
+  font-size: 20px;
+  margin: 0 10px;
+}
+
+.sidebar ul li a span {
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.sidebar:hover ul li a span,
+.sidebar.active ul li a span {
+  opacity: 1;
+}
+
+/* Content */
+.content {
+  margin-right: 70px;
+  padding: 20px;
+  transition: margin-right 0.3s;
+}
+
+.sidebar:hover ~ .content {
+  margin-right: 220px;
+}
+.top-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.icon-btn {
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #0d6efd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.icon-btn:hover {
+  background: #e7f0ff;
+  transform: scale(1.05);
+}
