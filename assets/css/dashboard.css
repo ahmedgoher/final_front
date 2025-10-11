@@ -207,7 +207,7 @@ body {
 
   /* Top Icons - تعديل موقع الزرار لفتح القائمة على الجوال */
   .top-icons {
-    justify-content: end; /*وزع الأيقونات والزرار */
+    justify-content: end !important; /* وزع الأيقونات والزرار*/
   }
 }
 
