@@ -20,21 +20,6 @@ body {
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-.main,
-.Reportspage,
-.invoices-container,
-.Notification,
-.Subjectspage,
-.Settingspage {
-  background: white;
-  border-radius: 20px;
-  box-shadow: var(--card-shadow);
-  margin-bottom: 30px;
-  padding: 30px;
-  transition: all 0.3s ease;
-  border: 1px solid var(--border-color);
-  /* display: none; */
-}
 /* Sidebar */
 .sidebar {
   position: fixed;
@@ -222,7 +207,7 @@ body {
 
   /* Top Icons - تعديل موقع الزرار لفتح القائمة على الجوال */
   .top-icons {
-    justify-content: space-between; /* وزع الأيقونات والزرار */
+    justify-content: end; /*وزع الأيقونات والزرار */
   }
 }
 

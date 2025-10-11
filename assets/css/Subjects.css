@@ -22,7 +22,7 @@ body {
 
 /* Start Subjectspage */
 #Subjectspage {
-  /* margin-right: 70px; */
+  margin-right: 70px;
   padding: 20px;
   transition: margin-right 0.3s;
 }
