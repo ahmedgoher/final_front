@@ -3,6 +3,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: #f8f9fa;
 }
+
 :root {
   --primary-color: #092c4c;
   --secondary-color: #f2994a;
@@ -114,9 +115,10 @@ body {
   transition: margin-right 0.3s;
 }
 
-.sidebar:hover ~ .content {
+.sidebar:hover~.content {
   margin-right: 220px;
 }
+
 .top-icons {
   display: flex;
   justify-content: flex-end;
