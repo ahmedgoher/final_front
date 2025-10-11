@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: DIN Next LT Arabic;
   background: #f8f9fa;
 }
 :root {
@@ -13,6 +13,7 @@ body {
   --sidebar-bg: #ffffff;
   --content-bg: #f8fafc;
   --white-color: #fff;
+  --hover-color: #e0e0e0;
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -144,4 +145,259 @@ body {
 .icon-btn:hover {
   background: #e7f0ff;
   transform: scale(1.05);
+}
+/*  */
+
+.Reportspage {
+  background: white;
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 32px;
+  padding: 32px;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.Reportspage .dropdown .repbtn {
+  color: var(--primary-color);
+  border: none;
+  border-radius: 16px;
+  padding: 12px 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.Reportspage .dropdown .repbtn {
+  color: var(--primary-color);
+  border: none;
+  border-radius: 16px;
+  padding: 16px 24px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.Reportspage .dropdown .repbtn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow);
+}
+
+.Reportspage .dropdown-menu {
+  border-radius: 12px;
+  border: none;
+  box-shadow: var(--hover-shadow);
+  padding: 10px;
+}
+
+.Reportspage .dropdown-menu .dropdown-item {
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: all 0.3s ease;
+  color: var(--primary-color);
+}
+
+.Reportspage .dropdown-menu .dropdown-item:hover {
+  color: var(--primary-color);
+  background-color: var(--hover-color);
+  transform: translateX(1.2px);
+}
+
+.Reportspage .choose-Sub {
+  margin: 20px 0 30px 0;
+}
+
+.Reportspage .sub-choose {
+  display: flex;
+  gap: 30px;
+}
+
+@media (max-width: 425px) {
+  .Reportspage .sub-choose {
+    gap: 14px;
+  }
+}
+/* Input Group */
+input-group {
+  position: relative;
+  margin: 24px 0;
+  width: 100%;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 16px;
+  font-size: 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  background: #f8fafc;
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input-group label {
+  /* تغيير التنسيق ليصبح أبسط وأكثر ثباتاً */
+  position: absolute; /* احتفظ بها كـ absolute لتظهر فوق الحقل */
+  right: 15px;
+  top: -12px;
+  background: var(--white-color);
+  border-radius: 20px;
+  padding: 5px 12px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  /* تأكد من أن اللون الخلفي للـ Label مطابق لخلفية الـ Reportspage */
+  z-index: 10;
+}
+
+/* ... [باقي الكود كما هو] ... */
+
+/* ---------------------------------------------------- */
+/* تحسين الاستجابة (Responsiveness)            */
+/* ---------------------------------------------------- */
+
+/* شاشات الجوال والأجهزة اللوحية (أقل من 768 بكسل) */
+@media (max-width: 768px) {
+  /* Sidebar - القائمة الجانبية */
+  .sidebar {
+    width: 250px; /* عرض ثابت للقائمة عند ظهورها */
+    right: -250px; /* إخفاء القائمة بالكامل خارج الشاشة */
+    /* عند التفعيل، تتحرك للداخل */
+    transition: right 0.3s ease-in-out;
+  }
+
+  /* عند إضافة كلاس active تظهر القائمة */
+  .sidebar.active {
+    right: 0;
+  }
+
+  /* Content - المحتوى الرئيسي */
+  .content {
+    margin-right: 0; /* المحتوى يأخذ عرض الشاشة بالكامل */
+    padding-right: 15px; /* تصحيح البادينج */
+    padding-left: 15px; /* تصحيح البادينج */
+  }
+
+  /* إلغاء سلوك التمرير (Hover) على الشاشات الصغيرة */
+  .sidebar:hover {
+    width: 250px; /* تثبيت العرض لمنع أي تغييرات غير مرغوبة */
+  }
+
+  /* إظهار النص وأيقونة اللوجو دائمًا على الجوال بمجرد ظهور القائمة */
+  .sidebar.active .logo img {
+    width: 60px;
+  }
+  .sidebar.active .logo span {
+    opacity: 1;
+  }
+  .sidebar.active ul li a span {
+    opacity: 1;
+  }
+
+  /* Overlay - إضافة تنسيق للطبقة الشفافة التي تغطي المحتوى */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    display: block; /* نجعله مرئيًا ليعمل الـ transition */
+  }
+
+  /* Top Icons - تعديل موقع الزرار لفتح القائمة على الجوال */
+  .top-icons {
+    justify-content: space-between; /* وزع الأيقونات والزرار */
+  }
+}
+
+/* شاشات أكبر من 768 بكسل (إلغاء سلوك الشاشات الصغيرة) */
+@media (min-width: 769px) {
+  /* التأكد من إزالة أي تنسيقات خاصة بالجوال على الشاشات الكبيرة */
+  .sidebar.active {
+    right: 0; /* لإلغاء القيمة -250px */
+    width: 70px; /* العودة لحجم التمرير الافتراضي */
+  }
+  .overlay {
+    display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  /* Sidebar - القائمة الجانبية */
+  .sidebar {
+    width: 250px;
+    right: -250px;
+    transition: right 0.3s ease-in-out;
+  }
+
+  /* عند إضافة كلاس active تظهر القائمة */
+  .sidebar.active {
+    right: 0;
+  }
+
+  /* Content - المحتوى الرئيسي */
+  .content {
+    margin-right: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  /* إلغاء سلوك التمرير (Hover) على الشاشات الصغيرة */
+  .sidebar:hover {
+    width: 250px;
+  }
+
+  /* إظهار النص وأيقونة اللوجو دائمًا على الجوال بمجرد ظهور القائمة */
+  .sidebar.active .logo img {
+    width: 60px;
+  }
+  .sidebar.active .logo span {
+    opacity: 1;
+  }
+  .sidebar.active ul li a span {
+    opacity: 1;
+  }
+
+  /* Overlay - الطبقة الشفافة */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    display: block;
+  }
+
+  /* Top Icons - إضافة زر القائمة على الجوال */
+  .top-icons {
+    justify-content: space-between;
+  }
+}
+
+/* شاشات أكبر من 768 بكسل (إلغاء سلوك الشاشات الصغيرة) */
+@media (min-width: 769px) {
+  .overlay {
+    display: none !important;
+  }
 }
