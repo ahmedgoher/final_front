@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  font-family: DIN Next LT Arabic;
+  background: #f8f9fa;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #092c4c;
+  --secondary-color: #f2994a;
+  --Info-color: #2f80ed;
+  --Success-color: #27ae60;
+  --Warning-color: #e2b93b;
+  --Error-color: #eb5757;
+  --sidebar-bg: #ffffff;
+  --content-bg: #f8fafc;
+  --white-color: #fff;
+  --border-color: #bdbdbd;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Start Reportspage */
+/* #mainpage {
+  margin-right: 72px;
+  padding: 24px;
+  transition: margin-right 0.3s;
+}
+
+.sidebar:hover ~ #mainpage {
+  margin-right: 220px;
+} */
+
+.mainpage .container .progres {
+  display: flex;
+  flex-direction: column;
+  margin: 24px 0;
+}
+
+.mainpage .container .progres .overall-prog {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  /* border: 2px solid var(--border-color); */
+  border-radius: 8px;
+  padding: 8px 16px;
+  background-color: var(--white-color);
+  box-shadow: var(--card-shadow);
+}
+.mainpage .container .progres .overall-prog .text p {
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--primary-color);
+}
+/* .mainpage .container .progres .deteils-prog {
+  display: flex;
+  justify-content: space-between;
+}*/
+.mainpage .container .progres .deteils-prog .exams,
+.mainpage .container .progres .deteils-prog .tasks {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 24px;
+  border-radius: 8px;
+  padding: 8px 16px;
+  background-color: var(--white-color);
+  box-shadow: var(--card-shadow);
+}
+.mainpage .container .progres .deteils-prog .exams p,
+.mainpage .container .progres .deteils-prog .tasks p {
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--primary-color);
+}
+#semiContainer {
+  width: 250px;
+  height: 125px;
+  margin: 16px;
+  position: relative;
+  font-size: 20px;
+}
+#semiContainerEXAM {
+  width: 200px;
+  height: 100px;
+  margin: 32px;
+  position: relative;
+  font-size: 18px;
+}
+#semiContainerTASK {
+  width: 200px;
+  height: 100px;
+  margin: 32px;
+  position: relative;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  #semiContainer {
+    width: 140px !important;
+    height: 70px !important;
+    margin: 8px auto !important;
+  }
+  #semiContainerEXAM {
+    width: 140px !important;
+    height: 70px !important;
+    margin: 8px auto !important;
+  }
+  #semiContainerTASK {
+    width: 140px !important;
+    height: 70px !important;
+    margin: 8px auto !important;
+  }
+  .mainpage .container .progres .deteils-prog .exams,
+  .mainpage .container .progres .deteils-prog .tasks {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 19.6px;
+    gap: 16px;
+  }
+  .mainpage .container .progres .overall-prog .text p {
+    font-size: 14px;
+    line-height: 19.6px;
+    gap: 16px;
+  }
+}
