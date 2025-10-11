@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/css/all.min.css" />
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/dashboard.css" />
+    <link rel="stylesheet" href="assets/css/Subjects.css" />
     <link rel="shortcut icon" href="assets/img/icon.svg" type="image/x-icon" />
   </head>
   <body>
@@ -69,216 +70,162 @@
           <i class="fa-solid fa-circle-user"></i>
         </button>
       </div>
-
-      <!-- <div class="Reportspage m-3 bodycontent" id="Reportspage">
-        <div class="sub-choose d-flex mb-3">
-          <div class="dropdown choose-Sub me-3" dir="rtl">
+      <div class="Subjectspage m-3" id="Subjectspage">
+        <div class="container text-center mt-3">
+          <div class="search">
+            <input
+              type="search"
+              class="form-control me-3"
+              placeholder="اكتب للبحث"
+            />
+            <i
+              class="fa-solid fa-magnifying-glass icon me-3 btn btn-outline-success me-1 icon"
+            ></i>
+          </div>
+          <div class="mb-3 p-3 btns">
             <button
-              class="btn dropdown-toggle repbtn"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
+              class="btn-btn-secondary me-3"
+              onclick="filterCourse('all')"
             >
-              اختر المادة
+              الكل
             </button>
-            <ul class="dropdown-menu" dir="rtl">
-              <li>
-                <a class="dropdown-item" data-subject="arabic" href="#">عربي</a>
-              </li>
-              <li>
-                <a class="dropdown-item" data-subject="english" href="#"
-                  >انجليزي</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" data-subject="chemistry" href="#"
-                  >كيمياء</a
-                >
-              </li>
-            </ul>
-          </div>  -->
-      <!-- <div class="sub-choose row mb-3">
-                             
-          <div class="dropdown choose-Sub col-12 col-sm-6 col-lg-4" dir="rtl">
-                       
             <button
-              class="btn dropdown-toggle repbtn w-100"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
+              class="btn-btn-secondary me-3"
+              onclick="filterCourse('عربي')"
             >
-                            اختر المادة            
+              عربي
             </button>
-            <ul class="dropdown-menu" dir="rtl">
-              <li>
-                <a class="dropdown-item" data-subject="arabic" href="#">عربي</a>
-              </li>
-              <li>
-                <a class="dropdown-item" data-subject="english" href="#"
-                  >انجليزي</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" data-subject="chemistry" href="#"
-                  >كيمياء</a
-                >
-              </li>
-            </ul>
-                                 
+            <button
+              class="btn-btn-secondary me-3"
+              onclick="filterCourse('انجليزي')"
+            >
+              انجليزي
+            </button>
+            <button
+              class="btn-btn-secondary me-3"
+              onclick="filterCourse('كيمياء')"
+            >
+              كيمياء
+            </button>
           </div>
-                   
-          <div class="input-group col-12 col-sm-6 col-lg-4">
-                       
-            <input type="text" id="studentName" value="عربي" disabled />        
-                <label for="studentName">اسم المادة</label>          
+          <div class="table-responsive">
+            <table
+              class="table table-hover text-center align-middle table_Edit"
+            >
+              <thead>
+                <tr>
+                  <th>ترتيب</th>
+                  <th>كود الكورس</th>
+                  <th>المحاضرة</th>
+                  <th>تفاصيل الكورس</th>
+                  <th>الانتهاء من الكورس</th>
+                  <th>عرض</th>
+                </tr>
+              </thead>
+              <tbody id="courseTable">
+                <tr data-subject="عربي">
+                  <td>1</td>
+                  <td>CS101</td>
+                  <td>مقدمة في الوحده الاولي</td>
+                  <td>شرح دروس نجيب محفوظ</td>
+                  <td>
+                    <span class="text-danger fw-bold">20%</span>
+                    <div class="progress">
+                      <div
+                        class="progress-bar bg-danger"
+                        style="width: 20%"
+                      ></div>
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-info">عرض</button>
+                  </td>
+                </tr>
+                <tr data-subject="انجليزي">
+                  <td>2</td>
+                  <td>WEB202</td>
+                  <td>مقدمه في زمن الماضي البسيط</td>
+                  <td>تعلم الماضي البسيط</td>
+                  <td>
+                    <span class="text-warning fw-bold">45%</span>
+                    <div class="progress">
+                      <div
+                        class="progress-bar bg-warning"
+                        style="width: 45%"
+                      ></div>
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-info">عرض</button>
+                  </td>
+                </tr>
+                <tr data-subject="انجليزي">
+                  <td>3</td>
+                  <td>DB303</td>
+                  <td>مقدمه عن المضارع التام</td>
+                  <td>فهم المضارع التام</td>
+                  <td>
+                    <span class="text-success fw-bold">70%</span>
+                    <div class="progress">
+                      <div
+                        class="progress-bar bg-success"
+                        style="width: 70%"
+                      ></div>
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-info">عرض</button>
+                  </td>
+                </tr>
+                <tr data-subject="كيمياء">
+                  <td>4</td>
+                  <td>REACT404</td>
+                  <td>شرح كيمياء العضويه</td>
+                  <td>فهم الكيمياء العضويه</td>
+                  <td>
+                    <span class="text-success fw-bold">90%</span>
+                    <div class="progress">
+                      <div
+                        class="progress-bar bg-success"
+                        style="width: 90%"
+                      ></div>
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-info">عرض</button>
+                  </td>
+                </tr>
+                <tr data-subject="كيمياء">
+                  <td>5</td>
+                  <td>SEC505</td>
+                  <td>شرح الكيمياء الغير العضويه</td>
+                  <td>فهم الكيمياء الغير العضويه</td>
+                  <td>
+                    <span class="text-primary fw-bold">100%</span>
+                    <div class="progress">
+                      <div
+                        class="progress-bar bg-primary"
+                        style="width: 100%"
+                      ></div>
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-info">عرض</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="btnsNextPre">
+              <button class="Previous">السابق</button>
+              <button class="Next">التالي</button>
+            </div>
           </div>
-                 
-        </div> -->
-
-      <!-- <div class="input-group">
-            <input type="text" id="studentName" value="عربي" disabled />
-            <label for="studentName">اسم المادة</label>
-          </div>
-        </div> -->
-
-      <!-- جدول عربي -->
-      <!-- <table
-          class="table table-striped table-hover subject-table"
-          id="arabic"
-        >
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>اسم الكورس</th>
-              <th>تسليم الواجب</th>
-              <th>درجات الامتحان</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>1</th>
-              <td>الوحدة الأولى عربي</td>
-              <td>تم التسليم</td>
-              <td>50</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>مراجعة على الوحدة الأولى</td>
-              <td>تحت المراجعة</td>
-              <td>49</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>مراجعة على الوحدة الأولى</td>
-              <td>تحت المراجعة</td>
-              <td>49</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>مراجعة على الوحدة الأولى</td>
-              <td>تحت المراجعة</td>
-              <td>49</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>مراجعة على الوحدة الأولى</td>
-              <td>تحت المراجعة</td>
-              <td>49</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>مراجعة على الوحدة الأولى</td>
-              <td>تحت المراجعة</td>
-              <td>49</td>
-            </tr>
-          </tbody>
-        </table> -->
-
-      <!-- جدول إنجليزي -->
-      <!-- <table
-          class="table table-striped table-hover subject-table d-none"
-          id="english"
-        >
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>اسم الكورس</th>
-              <th>تسليم الواجب</th>
-              <th>درجات الامتحان</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>1</th>
-              <td>Unit 1 English</td>
-              <td>Submitted</td>
-              <td>45</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Review Unit 1</td>
-              <td>Not Submitted</td>
-              <td>38</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Review Unit 1</td>
-              <td>Not Submitted</td>
-              <td>38</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Review Unit 1</td>
-              <td>Not Submitted</td>
-              <td>38</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Review Unit 1</td>
-              <td>Not Submitted</td>
-              <td>38</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Review Unit 1</td>
-              <td>Not Submitted</td>
-              <td>38</td>
-            </tr>
-          </tbody>
-        </table> -->
-
-      <!-- جدول كيمياء -->
-      <!-- <table
-          class="table table-striped table-hover subject-table d-none"
-          id="chemistry"
-        >
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>اسم الكورس</th>
-              <th>تسليم الواجب</th>
-              <th>درجات الامتحان</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>1</th>
-              <td>الوحدة الأولى كيمياء</td>
-              <td>تم التسليم</td>
-              <td>48</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>الوحدة الثانية كيمياء</td>
-              <td>لم يسلم بعد</td>
-              <td>41</td>
-            </tr>
-          </tbody>
-        </table>
-      </div> -->
+        </div>
+      </div>
     </div>
     <script src="assets/js/all.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/dashbord.js"></script>
+    <script src="assets/js/Subjects.js"></script>
   </body>
 </html>
