@@ -47,7 +47,7 @@ var semiContainerExam = new ProgressBar.SemiCircle("#semiContainerEXAM", {
 });
 
 semiContainerExam.text.style.fontFamily = "DIN Next LT Arabic";
-// semiContainerExam.text.style.fontSize = "1.5rem";
+// semiContainerExam.text.style.fontSize = "1rem";
 semiContainerExam.animate(0.7); // 70%
 
 // Task
@@ -64,7 +64,7 @@ var semiContainerTask = new ProgressBar.SemiCircle("#semiContainerTASK", {
     alignToBottom: false,
   },
   from: { color: "#eb5757" },
-  to: { color: "#27AE60 " },
+  to: { color: "#27AE60" },
   step: function (state, bar) {
     bar.path.setAttribute("stroke", state.color);
     var value = Math.round(bar.value() * 100);
@@ -73,7 +73,7 @@ var semiContainerTask = new ProgressBar.SemiCircle("#semiContainerTASK", {
 });
 
 semiContainerTask.text.style.fontFamily = "DIN Next LT Arabic";
-// semiContainerTask.text.style.fontSize = "1.5rem";
+// semiContainerTask.text.style.fontSize = "1rem";
 semiContainerTask.animate(0.9); // 90%
 
 // document.addEventListener("DOMContentLoaded", () => {
