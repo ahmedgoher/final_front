@@ -53,7 +53,7 @@ semiContainerExam.animate(0.7); // 70%
 // Task
 var semiContainerTask = new ProgressBar.SemiCircle("#semiContainerTASK", {
   strokeWidth: 10,
-  color: "#092c4c",
+  color: "#27AE60",
   trailColor: "#eee",
   trailWidth: 10,
   easing: "easeInOut",
@@ -64,7 +64,7 @@ var semiContainerTask = new ProgressBar.SemiCircle("#semiContainerTASK", {
     alignToBottom: false,
   },
   from: { color: "#eb5757" },
-  to: { color: "#092c4c" },
+  to: { color: "#27AE60 " },
   step: function (state, bar) {
     bar.path.setAttribute("stroke", state.color);
     var value = Math.round(bar.value() * 100);
@@ -75,3 +75,24 @@ var semiContainerTask = new ProgressBar.SemiCircle("#semiContainerTASK", {
 semiContainerTask.text.style.fontFamily = "DIN Next LT Arabic";
 // semiContainerTask.text.style.fontSize = "1.5rem";
 semiContainerTask.animate(0.9); // 90%
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const cards = document.querySelectorAll(".card-courses");
+
+//   const observer = new IntersectionObserver(
+//     (entries) => {
+//       entries.forEach((entry) => {
+//         if (entry.isIntersecting) {
+//           entry.target.classList.add("show");
+//         }
+//       });
+//     },
+//     {
+//       threshold: 0.2,
+//     }
+//   );
+
+//   cards.forEach((card) => {
+//     observer.observe(card);
+//   });
+// });

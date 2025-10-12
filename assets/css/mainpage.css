@@ -126,3 +126,205 @@ body {
     gap: 16px;
   }
 }
+
+.courses .text {
+  margin: 40px 0;
+  text-align: start;
+}
+.courses .text p {
+  color: var(--primary-color);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+/* ======= حاوية الكروت ======= */
+.courses-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  /* margin: 0 auto; */
+  /* padding: 10px 0; */
+}
+
+/* ======= الكارد ======= */
+.card-courses {
+  flex: 1 1 300px;
+  max-width: 340px;
+  min-width: 260px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  transition: 0.4s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  animation: fadeInUp 0.7s ease forwards;
+  opacity: 0; /* هيظهر وقت التمرير */
+}
+.card-courses.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.card-courses.hidden {
+  display: none;
+}
+
+/* ======= الصورة ======= */
+.image-courses {
+  height: 220px;
+  width: 100%;
+  overflow: hidden;
+}
+.image-courses img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.card-courses:hover .image-courses img {
+  transform: scale(1.08);
+}
+
+/* ======= محتوى الكارد ======= */
+.body-course {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.body-course .bodyright .brtop p {
+  font-weight: bold;
+  color: #333;
+  margin: 8px 0;
+}
+.body-course .bodyright .brmid p {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+.body-course .bodyright .brdowm p {
+  color: #666;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+/* ======= الأزرار ======= */
+.bodyleft {
+  text-align: center;
+  padding: 12px 0;
+  border-top: 1px solid #eee;
+}
+.bodyleft a {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 6px;
+  background: var(--secondary-color);
+  color: var(--white-color);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.bodyleft .subscribe {
+  background-color: var(--primary-color);
+}
+.bodyleft a:hover {
+  background: var(--primary-color);
+}
+
+/* ======= السعر والتاريخ ======= */
+.bodybuttom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+.bodybuttom .price span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #27ae60;
+}
+.bodybuttom .date h3 {
+  font-size: 13px;
+  color: #888;
+  font-weight: normal;
+}
+
+/* ======= الريسبونسف ======= */
+@media (max-width: 1024px) {
+  .courses-card {
+    justify-content: center;
+  }
+  .card-courses {
+    flex: 1 1 calc(50% - 20px);
+    max-width: 48%;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-courses {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .courses-card {
+    gap: 16px;
+    padding: 8px;
+  }
+  .card-courses {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: auto;
+    margin: 0;
+  }
+  .image-courses {
+    height: 180px;
+  }
+}
+
+@media (max-width: 320px) {
+  .courses-card {
+    padding: 6px;
+  }
+  .card-courses {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+  .body-course {
+    padding: 10px;
+  }
+}
+
+/* ======= الأنيميشن ======= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.courses .pagenation {
+  margin: 0 auto;
+  width: 20%;
+}
+.courses .pagenation li {
+  color: var(--primary-color);
+}
