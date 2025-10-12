@@ -288,3 +288,42 @@ body {
     display: none !important;
   }
 }
+.notification {
+  width: 320px;
+  position: absolute;
+  background-color: var(--white-color);
+  left: 60px;
+  z-index: 100;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 8px;
+}
+.notification .messages {
+  border-bottom: 1px solid var(--border-color);
+  padding-top: 8px;
+}
+.notification .messages p {
+  color: #666;
+}
+.notification::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-top: 1px solid var(--border-color); /* لون السهم */
+  border-right: 1px solid var(--border-color);
+  position: absolute;
+  top: -7px; /* فوق العنصر */
+  left: 32px;
+  background-color: var(--white-color);
+  transform: translateX(-50%) rotate(-45deg); /* لفوق */
+  z-index: 101;
+}
+@media (max-width: 320px) {
+  .notification {
+    left: 20px;
+    width: 250px;
+  }
+  .notification::after {
+    left: 70px;
+  }
+}

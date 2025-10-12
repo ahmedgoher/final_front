@@ -76,23 +76,8 @@ semiContainerTask.text.style.fontFamily = "DIN Next LT Arabic";
 // semiContainerTask.text.style.fontSize = "1rem";
 semiContainerTask.animate(0.9); // 90%
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   const cards = document.querySelectorAll(".card-courses");
-
-//   const observer = new IntersectionObserver(
-//     (entries) => {
-//       entries.forEach((entry) => {
-//         if (entry.isIntersecting) {
-//           entry.target.classList.add("show");
-//         }
-//       });
-//     },
-//     {
-//       threshold: 0.2,
-//     }
-//   );
-
-//   cards.forEach((card) => {
-//     observer.observe(card);
-//   });
+// const notification = document.getElementById("notification");
+// const notificationBtn = document.getElementById("notification-btn");
+// notificationBtn.addEventListener("click", function () {
+//   notification.classList.toggle("d-none");
 // });

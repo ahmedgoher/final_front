@@ -15,7 +15,7 @@ body {
   --sidebar-bg: #ffffff;
   --content-bg: #f8fafc;
   --white-color: #fff;
-  --border-color: #bdbdbd;
+  --border-color: #ddd;
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
