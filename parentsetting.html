@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SettingPage</title>
+        <link rel="stylesheet" href="assets/css/all.min.css" />
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/css/Setting.css" />
+        <link rel="shortcut icon" href="assets/img/icon.svg" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <div class="Settingspage m-3 " id="Settingspage">
+            <!-- الشمال: بروفايل -->
+            <div class="settings-card left-profile">
+                <div class="avatar">
+                    <img src="/assets/img/profile-dark.gif" alt="avatar" style="width:100">
+                </div>
+                <h3> خالد أشرف </h3>
+                <p>ولي أمر الطالبين: أحمد خالد، سارة خالد</p>
+                <p>Parent ID: 56789</p>
+
+                <div class="btns">
+                    <button id="edit-btn" class="btn edit"><i class="fa-solid fa-pen"></i> تعديل الصورة الشخصية
+                    </button>
+                    <input type="file" id="file-input" accept="image/*" style="display:none;">
+                    <button class="btn delete">حذف</button>
+                </div>
+
+                <!-- زر الانتقال لصفحة الأبناء -->
+                <a href="#" class="btn btn-primary w-100 mt-3">
+                    <i class="fa-solid fa-children me-2"></i> إدارة الأبناء
+                </a>
+            </div>
+
+            <!-- اليمين: محتوى الإعدادات -->
+            <section class="settings-card right-content">
+                <div class="card-header">
+                    <h4>إعدادات ولي الأمر</h4>
+                    <div class="settings-tabs">
+                        <button class="active">البيانات</button>
+                        <button>كلمة المرور</button>
+                        <button>الإشعارات</button>
+                    </div>
+                </div>
+
+                <form class="settings-form active">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">الاسم الكامل</label>
+                            <input class="form-control" placeholder="خالد أشرف خليل">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">العنوان</label>
+                            <input class="form-control" placeholder="القاهرة - مصر">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">البريد الإلكتروني</label>
+                            <input class="form-control" placeholder="khaled.parent@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">رقم الهاتف</label>
+                            <input class="form-control" placeholder="01096541656">
+                        </div>
+                    </div>
+                    <button class="btn-save">حفظ التغييرات</button>
+                </form>
+
+                <!-- change password  -->
+                <form class="settings-form">
+                    <div class=" form-row">
+                        <div class="form-group">
+                            <label class="form-label">كلمه المرور الحاليه </label>
+                            <input type="password" class="form-control" placeholder="current password">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">تاكيد كلمه المرور الحاليه</label>
+                            <input type="password" class="form-control " placeholder="Sure current password">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">كلمه المرور الجديده </label>
+                            <input type="password" class="form-control" placeholder="New password">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">تاكيد كلمه المرور الجديده</label>
+                            <input type="password" class="form-control" placeholder="Sure New password">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-save">حفظ التغييرات</button>
+                </form>
+                <div class="settings-form">
+                    <div class="card shadow-sm p-3 mb-4 rounded-3">
+                        <h5 class="fw-bold mb-3">
+
+                            <img src="/assets/img/Clock-fill (1).svg" alt=""> إعدادات الإشعارات
+                        </h5>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="notifyAll1" class="toggle-input" checked>
+                            <label for="notifyAll1" class="toggle-label"></label>
+                            <span class="toggle-text">تفعيل كل الإشعارات</span>
+                        </div>
+
+                        <hr>
+
+                        <div class="toggle-container">
+                            <input type="checkbox" id="notifyAll2" class="toggle-input" checked>
+                            <label for="notifyAll2" class="toggle-label"></label>
+                            <span class="toggle-text">إشعار عند إضافة كورسات جديدة</span>
+                        </div>
+
+                        <div class="toggle-container">
+                            <input type="checkbox" id="notifyAll3" class="toggle-input" checked>
+                            <label for="notifyAll3" class="toggle-label"></label>
+                            <span class="toggle-text">إشعار عند إضافة واجبات او امتحانات</span>
+                        </div>
+
+                        <div class="toggle-container">
+                            <input type="checkbox" id="notifyAll4" class="toggle-input" checked>
+                            <label for="notifyAll4" class="toggle-label"></label>
+                            <span class="toggle-text">إشعار عند استلام رسالة جديدة</span>
+                        </div>
+
+                        <hr>
+
+                        <div class="toggle-container">
+                            <input type="checkbox" id="notifyAll5" class="toggle-input" checked>
+                            <label for="notifyAll5" class="toggle-label"></label>
+                            <span class="toggle-text">استقبال إشعارات عبر البريد الإلكتروني</span>
+                        </div>
+
+                        <div class="toggle-container">
+                            <input type="checkbox" id="notifyAll6" class="toggle-input" checked>
+                            <label for="notifyAll6" class="toggle-label"></label>
+                            <span class="toggle-text">استقبال إشعارات داخل الموقع فقط</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <script src="assets/js/all.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/Setting.js"></script>
+    </body>
+
+    </html>
+</body>
+
+</html>
