@@ -90,34 +90,43 @@ body {
     border-radius: 8px;
 }
 
-
-
+.badgeUnderReview {
+    background-color: var(--Warning-color);
+    color: var(--white-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+}
 
 .table_Edit {
     background-color: var(--content-bg);
-    border-radius: 8px;
+    border-radius: 4px;
     overflow: hidden;
     direction: rtl;
-    width: 1040px;
-    height: calc(64px * 5);
 }
 
 .table_Edit thead th {
     background-color: var(--primary-color);
     color: var(--white-color);
+    text-align: center;
+    vertical-align: middle;
 }
 
 .table_Edit tbody tr button {
     background-color: var(--secondary-color);
-    border-radius: 8px;
+    border-radius: 4px;
     padding: 8px 16px;
     border: none;
     transition: 0.3s ease;
 }
 
+.table_Edit th,
+.table_Edit tr {
+    height: 64px;
+}
+
 .table_Edit tbody td button:hover {
     background-color: var(--primary-color);
-    color: white;
+    color: whit
 }
 
 .btnsNextPre {
@@ -154,6 +163,8 @@ button.Previous {
 }
 
 @media (max-width: 576px) {
+
+
     .search {
         flex-direction: column;
         gap: 8px;
@@ -174,4 +185,5 @@ button.Previous {
         width: auto;
         height: auto;
     }
+
 }

@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: DIN Next LT Arabic;
   background: #f8f9fa;
 }
 
@@ -14,6 +14,7 @@ body {
   --sidebar-bg: #ffffff;
   --content-bg: #f8fafc;
   --white-color: #fff;
+  --hover-color: #e0e0e0;
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -123,8 +124,9 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: 20px;
-  gap: 10px;
+  color: var(--primary-color);
+  margin-bottom: 24px;
+  gap: 16px;
 }
 
 .icon-btn {
@@ -136,14 +138,222 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  color: #0d6efd;
+  font-size: 24px;
+  color: var(--primary-color);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
 }
 
 .icon-btn:hover {
-  background: #e7f0ff;
+  background: var(--primary-color);
+  color: var(--Warning-color);
   transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+
+  /* Sidebar - القائمة الجانبية */
+  .sidebar {
+    width: 250px;
+    /* عرض ثابت للقائمة عند ظهورها */
+    right: -250px;
+    /* إخفاء القائمة بالكامل خارج الشاشة */
+    /* عند التفعيل، تتحرك للداخل */
+    transition: right 0.3s ease-in-out;
+  }
+
+  /* عند إضافة كلاس active تظهر القائمة */
+  .sidebar.active {
+    right: 0;
+  }
+
+  /* Content - المحتوى الرئيسي */
+  .content {
+    margin-right: 0;
+    /* المحتوى يأخذ عرض الشاشة بالكامل */
+    padding-right: 15px;
+    /* تصحيح البادينج */
+    padding-left: 15px;
+    /* تصحيح البادينج */
+  }
+
+  /* إلغاء سلوك التمرير (Hover) على الشاشات الصغيرة */
+  .sidebar:hover {
+    width: 250px;
+    /* تثبيت العرض لمنع أي تغييرات غير مرغوبة */
+  }
+
+  /* إظهار النص وأيقونة اللوجو دائمًا على الجوال بمجرد ظهور القائمة */
+  .sidebar.active .logo img {
+    width: 60px;
+  }
+
+  .sidebar.active .logo span {
+    opacity: 1;
+  }
+
+  .sidebar.active ul li a span {
+    opacity: 1;
+  }
+
+  /* Overlay - إضافة تنسيق للطبقة الشفافة التي تغطي المحتوى */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    display: block;
+    /* نجعله مرئيًا ليعمل الـ transition */
+  }
+
+  /* Top Icons - تعديل موقع الزرار لفتح القائمة على الجوال */
+  .top-icons {
+    justify-content: end !important;
+    /* وزع الأيقونات والزرار*/
+  }
+}
+
+/* شاشات أكبر من 768 بكسل (إلغاء سلوك الشاشات الصغيرة) */
+@media (min-width: 769px) {
+
+  /* التأكد من إزالة أي تنسيقات خاصة بالجوال على الشاشات الكبيرة */
+  .sidebar.active {
+    right: 0;
+    /* لإلغاء القيمة -250px */
+    width: 70px;
+    /* العودة لحجم التمرير الافتراضي */
+  }
+
+  .overlay {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Sidebar - القائمة الجانبية */
+  .sidebar {
+    width: 250px;
+    right: -250px;
+    transition: right 0.3s ease-in-out;
+  }
+
+  /* عند إضافة كلاس active تظهر القائمة */
+  .sidebar.active {
+    right: 0;
+  }
+
+  /* Content - المحتوى الرئيسي */
+  .content {
+    margin-right: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  /* إلغاء سلوك التمرير (Hover) على الشاشات الصغيرة */
+  .sidebar:hover {
+    width: 250px;
+  }
+
+  /* إظهار النص وأيقونة اللوجو دائمًا على الجوال بمجرد ظهور القائمة */
+  .sidebar.active .logo img {
+    width: 60px;
+  }
+
+  .sidebar.active .logo span {
+    opacity: 1;
+  }
+
+  .sidebar.active ul li a span {
+    opacity: 1;
+  }
+
+  /* Overlay - الطبقة الشفافة */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    display: block;
+  }
+
+  /* Top Icons - إضافة زر القائمة على الجوال */
+  .top-icons {
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 769px) {
+  .overlay {
+    display: none !important;
+  }
+}
+
+.notification {
+  width: 320px;
+  position: absolute;
+  background-color: var(--white-color);
+  left: 60px;
+  z-index: 100;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.notification .messages {
+  border-bottom: 1px solid var(--border-color);
+  padding-top: 8px;
+}
+
+.notification .messages p {
+  color: #666;
+}
+
+.notification::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-top: 1px solid var(--border-color);
+  /* لون السهم */
+  border-right: 1px solid var(--border-color);
+  position: absolute;
+  top: -7px;
+  /* فوق العنصر */
+  left: 32px;
+  background-color: var(--white-color);
+  transform: translateX(-50%) rotate(-45deg);
+  /* لفوق */
+  z-index: 101;
+}
+
+@media (max-width: 320px) {
+  .notification {
+    left: 20px;
+    width: 250px;
+  }
+
+  .notification::after {
+    left: 70px;
+  }
 }

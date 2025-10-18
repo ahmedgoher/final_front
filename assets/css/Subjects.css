@@ -106,25 +106,29 @@ body {
 
 .table_Edit {
     background-color: var(--content-bg);
-    border-radius: 8px;
+    border-radius: 4px;
     overflow: hidden;
     direction: rtl;
-
 }
 
 .table_Edit thead th {
     background-color: var(--primary-color);
     color: var(--white-color);
+    text-align: center;
+    vertical-align: middle;
 }
-
-
 
 .table_Edit tbody tr button {
     background-color: var(--secondary-color);
-    border-radius: 8px;
+    border-radius: 4px;
     padding: 8px 16px;
     border: none;
     transition: 0.3s ease;
+}
+
+.table_Edit th,
+.table_Edit tr {
+    height: 64px;
 }
 
 .table_Edit tbody td button:hover {
@@ -138,6 +142,7 @@ body {
     align-items: center;
     margin-top: 16px;
     transition: 0.3s;
+    direction: ltr;
 }
 
 #Subjectspage button.Next {
@@ -166,8 +171,12 @@ body {
 
 @media (max-width: 576px) {
     .search {
-        flex-direction: column;
+        /* flex-direction: column; */
         gap: 8px;
+    }
+
+    .form-group input {
+        background-color: red;
     }
 
     .btns {
@@ -178,6 +187,13 @@ body {
     .table_Edit {
         font-size: 14px;
     }
+
+    .container {
+        margin: 0;
+        padding: 0;
+    }
 }
+
+
 
 /* End Subjectspage */
