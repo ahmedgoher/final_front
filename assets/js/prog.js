@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // إنشاء البروجريس
   var bar = new ProgressBar.SemiCircle(container, {
     strokeWidth: 8,
-    color: "#092c4c",
     trailColor: "#eee",
     trailWidth: 8,
     easing: "easeInOut",
     duration: 1500,
+    color: "#dc3545", // اللون الابتدائي (أحمر)
     text: {
       value: "0%",
       style: {
@@ -26,7 +26,20 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     },
     step: (state, bar) => {
-      bar.setText(Math.round(bar.value() * 100) + "%");
+      const value = Math.round(bar.value() * 100);
+      bar.setText(value + "%");
+
+      // تغيير اللون حسب النسبة
+      let color;
+      if (value < 50) {
+        color = "#EB5757"; // أحمر
+      } else if (value < 75) {
+        color = "#E2B93B"; // أصفر
+      } else {
+        color = "#27AE60"; // أخضر
+      }
+
+      bar.path.setAttribute("stroke", color);
     },
   });
 
@@ -34,10 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const subjectProgress = {
     arabic: 0.9, // 90%
     english: 0.65, // 65%
-    chemistry: 0.88, // 88%
+    chemistry: 0.4, // 40%
   };
 
-  // النسبة المبدئية (عربي)
+  // النسبة المبدئية
   bar.animate(subjectProgress["arabic"]);
 
   // لما المستخدم يختار مادة

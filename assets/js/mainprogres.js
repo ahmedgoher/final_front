@@ -1,80 +1,37 @@
-// Overall
-var semiContainerOverall = new ProgressBar.SemiCircle("#semiContainer", {
-  strokeWidth: 10,
-  color: "#092c4c",
-  trailColor: "#eee",
-  trailWidth: 10,
-  easing: "easeInOut",
-  duration: 1400,
-  svgStyle: null,
-  text: {
-    value: "",
-    alignToBottom: false,
-  },
-  from: { color: "#eb5757" },
-  to: { color: "#092c4c" },
-  step: function (state, bar) {
-    bar.path.setAttribute("stroke", state.color);
-    var value = Math.round(bar.value() * 100);
-    bar.setText(value + "%");
-  },
-});
+function getColorByValue(value) {
+  if (value < 50) return "#eb5757"; // أحمر
+  if (value < 75) return "#E2B93B"; // أصفر
+  return "#27AE60"; // أخضر
+}
 
-semiContainerOverall.text.style.fontFamily = "DIN Next LT Arabic";
-// semiContainerOverall.text.style.fontSize = "1.5rem";
-semiContainerOverall.animate(0.85); // 85%
+function createSemiCircle(containerId, percentage) {
+  var bar = new ProgressBar.SemiCircle(containerId, {
+    strokeWidth: 10,
+    trailColor: "#eee",
+    trailWidth: 10,
+    easing: "easeInOut",
+    duration: 1400,
+    svgStyle: null,
+    text: {
+      value: "",
+      alignToBottom: false,
+    },
+    step: function (state, bar) {
+      var value = Math.round(bar.value() * 100);
+      bar.path.setAttribute("stroke", getColorByValue(value));
+      bar.setText(value + "%");
+    },
+  });
 
-// Exam
-var semiContainerExam = new ProgressBar.SemiCircle("#semiContainerEXAM", {
-  strokeWidth: 10,
-  color: "#f2994a",
-  trailColor: "#eee",
-  trailWidth: 10,
-  easing: "easeInOut",
-  duration: 1400,
-  svgStyle: null,
-  text: {
-    value: "",
-    alignToBottom: false,
-  },
-  from: { color: "#eb5757" },
-  to: { color: "#f2994a" },
-  step: function (state, bar) {
-    bar.path.setAttribute("stroke", state.color);
-    var value = Math.round(bar.value() * 100);
-    bar.setText(value + "%");
-  },
-});
+  bar.text.style.fontFamily = "DIN Next LT Arabic";
+  bar.animate(percentage); // يبدأ التحريك للنسبة المطلوبة
+  return bar;
+}
 
-semiContainerExam.text.style.fontFamily = "DIN Next LT Arabic";
-// semiContainerExam.text.style.fontSize = "1rem";
-semiContainerExam.animate(0.7); // 70%
-
-// Task
-var semiContainerTask = new ProgressBar.SemiCircle("#semiContainerTASK", {
-  strokeWidth: 10,
-  color: "#27AE60",
-  trailColor: "#eee",
-  trailWidth: 10,
-  easing: "easeInOut",
-  duration: 1400,
-  svgStyle: null,
-  text: {
-    value: "",
-    alignToBottom: false,
-  },
-  from: { color: "#eb5757" },
-  to: { color: "#27AE60" },
-  step: function (state, bar) {
-    bar.path.setAttribute("stroke", state.color);
-    var value = Math.round(bar.value() * 100);
-    bar.setText(value + "%");
-  },
-});
-
-semiContainerTask.text.style.fontFamily = "DIN Next LT Arabic";
-// semiContainerTask.text.style.fontSize = "1rem";
-semiContainerTask.animate(0.9); // 90%
+// إنشاء الثلاث دوائر:
+var semiContainerOverall = createSemiCircle("#semiContainer", 0.85); // 85%
+var semiContainerExam = createSemiCircle("#semiContainerEXAM", 0.7); // 70%
+var semiContainerTask = createSemiCircle("#semiContainerTASK", 0.9); // 90%
 
 // const notification = document.getElementById("notification");
 // const notificationBtn = document.getElementById("notification-btn");
