@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>لوحة تحكم الأدمن - منصة تعليمية</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="shortcut icon" href="assets/img/icon.svg" type="image/x-icon" />
+
+    <style>
+      :root {
+        --bg: #f7fbff;
+        --card: #ffffff;
+        --accent: #1e3a8a; /* كحلي */
+        --accent-2: #3b82f6; /* أزرق فاتح */
+        --muted: #6b7280;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+        --glass: rgba(255, 255, 255, 0.6);
+      }
+      * {
+        box-sizing: border-box;
+        font-family: "Cairo", sans-serif;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #0f172a;
+      }
+      .app {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 260px;
+        background: linear-gradient(180deg, var(--accent), #16325a);
+        color: #fff;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .brand .logo {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--accent-2), #6366f1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+      .brand h1 {
+        font-size: 18px;
+        margin: 0;
+      }
+      .nav {
+        margin-top: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .nav a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px;
+        border-radius: 8px;
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+      }
+      .nav a:hover {
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .nav a.active {
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .nav a i {
+        width: 26;
+        text-align: center;
+      }
+      .sidebar .footer {
+        margin-top: auto;
+        font-size: 13px;
+        opacity: 0.9;
+      }
+
+      /* Main */
+      .main {
+        flex: 1;
+        padding: 20px;
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .search {
+        flex: 1;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .search input {
+        flex: 1;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid #e6eef8;
+        background: #fff;
+      }
+      .actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .btn {
+        background: var(--accent);
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+      }
+      .card-row {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+        margin-top: 18px;
+      }
+      .card {
+        background: var(--card);
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .card .title {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .card .num {
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .card .meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* Charts & content */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 16px;
+        margin-top: 18px;
+      }
+      .panel {
+        background: var(--card);
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
+      }
+
+      .activities {
+        margin-top: 16px;
+      }
+      .activity {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px dashed #eef2ff;
+      }
+      .activity:last-child {
+        border-bottom: none;
+      }
+      .act-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      .act-text {
+        font-size: 14px;
+      }
+      .small {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* Responsive */
+      @media (max-width: 1000px) {
+        .card-row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          display: none;
+        }
+      }
+
+      /* RTL tweaks */
+      :dir(rtl) .search input {
+        direction: ltr;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="logo">ED</div>
+          <div>
+            <h1>منصة التعليم</h1>
+            <div class="small">لوحة تحكم الأدمن</div>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a class="active"><i>🏠</i> الرئيسية</a>
+          <a><i>👥</i> إدارة المستخدمين</a>
+          <a><i>🎓</i> إدارة الكورسات</a>
+          <a><i>💳</i> المعاملات المالية</a>
+          <a><i>📊</i> التقارير</a>
+          <a><i>📩</i> الشكاوى والدعم</a>
+          <a><i>⚙️</i> الإعدادات</a>
+        </nav>
+
+        <div class="footer">
+          <div>نسخة تجريبية</div>
+          <div class="small">آخر دخول: 25 Oct 2025</div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="topbar">
+          <div class="search">
+            <input placeholder="ابحث عن طالب، مدرس، كورس..." />
+          </div>
+          <div class="actions">
+            <button class="btn">إرسال إشعار</button>
+            <div style="display: flex; align-items: center; gap: 8px">
+              <div style="text-align: center; margin-left: 8px">
+                <div style="font-weight: 700">Ahmed M.</div>
+                <div class="small">أدمن</div>
+              </div>
+              <img
+                src="https://via.placeholder.com/38"
+                style="border-radius: 8px"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="card-row">
+          <div class="card">
+            <div class="title">الطلاب المسجلين</div>
+            <div class="num">2,340</div>
+            <div class="meta">زيادة 5% هذا الأسبوع</div>
+          </div>
+
+          <div class="card">
+            <div class="title">المعلمين النشطين</div>
+            <div class="num">150</div>
+            <div class="meta">أعلى تقييم: أحمد حسن</div>
+          </div>
+
+          <div class="card">
+            <div class="title">عدد الكورسات</div>
+            <div class="num">420</div>
+            <div class="meta">12 قيد المراجعة</div>
+          </div>
+
+          <div class="card">
+            <div class="title">الكورسات في الانتظار</div>
+            <div class="num">12</div>
+            <div class="meta">راجعهم الآن</div>
+          </div>
+
+          <div class="card">
+            <div class="title">إجمالي أرباح المنصة (هذا الشهر)</div>
+            <div class="num">EGP 85,000</div>
+            <div class="meta">نسبة المنصة: 20%</div>
+          </div>
+        </div>
+
+        <!-- Charts and sidebar -->
+        <div class="grid-2">
+          <div class="panel">
+            <h3 style="margin: 0 0 12px 0">الأداء الشهري - الأرباح</h3>
+            <canvas id="earningsChart" height="160"></canvas>
+
+            <div style="display: flex; gap: 12px; margin-top: 18px">
+              <div
+                style="
+                  flex: 1;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <div>
+                  <div class="small">مبيعات هذا الشهر</div>
+                  <div style="font-weight: 700">1,220 مبيعة</div>
+                </div>
+                <div style="text-align: left">
+                  <div class="small">إجمالي الربح</div>
+                  <div style="font-weight: 700">EGP 85,000</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="activities">
+              <h4 style="margin: 14px 0 8px 0">آخر الأحداث</h4>
+              <div class="activity">
+                <div class="act-dot" style="background: var(--success)"></div>
+                <div>
+                  <div class="act-text">
+                    الطالب <strong>محمد علي</strong> اشترك في كورس
+                    <strong>Python Basics</strong>
+                  </div>
+                  <div class="small">قبل 2 ساعة</div>
+                </div>
+              </div>
+
+              <div class="activity">
+                <div class="act-dot" style="background: var(--warning)"></div>
+                <div>
+                  <div class="act-text">
+                    تم رفع كورس جديد من <strong>أحمد حسن</strong>:
+                    <strong>React Basics</strong>
+                  </div>
+                  <div class="small">قبل 5 ساعات</div>
+                </div>
+              </div>
+
+              <div class="activity">
+                <div class="act-dot" style="background: var(--danger)"></div>
+                <div>
+                  <div class="act-text">
+                    وصلت شكوى جديدة من <strong>علي مصطفى</strong> عن كورس
+                    <strong>Java</strong>
+                  </div>
+                  <div class="small">قبل 1 يوم</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h4 style="margin: 0 0 12px 0">نظرة سريعة</h4>
+            <canvas id="usersChart" height="160"></canvas>
+
+            <div style="margin-top: 18px">
+              <h5 style="margin: 0 0 8px 0">الإشعارات</h5>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 8px;
+                  margin-top: 6px;
+                "
+              >
+                <div
+                  style="
+                    padding: 12px;
+                    border-radius: 8px;
+                    background: linear-gradient(
+                      90deg,
+                      rgba(59, 130, 246, 0.08),
+                      rgba(99, 102, 241, 0.04)
+                    );
+                  "
+                >
+                  طالب جديد اشترك في كورس
+                </div>
+                <div
+                  style="
+                    padding: 12px;
+                    border-radius: 8px;
+                    background: #fff;
+                    border: 1px solid #eef2ff;
+                  "
+                >
+                  طلب مراجعة لكورس من مدرس
+                </div>
+                <div
+                  style="
+                    padding: 12px;
+                    border-radius: 8px;
+                    background: #fff;
+                    border: 1px solid #eef2ff;
+                  "
+                >
+                  طلب سحب أرباح من مدرس
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const labels = [
+        "يناير",
+        "فبراير",
+        "مارس",
+        "أبريل",
+        "مايو",
+        "يونيو",
+        "يوليو",
+        "أغسطس",
+        "سبتمبر",
+        "أكتوبر",
+      ];
+      const earningsData = [
+        12000, 15000, 10000, 18000, 22000, 20000, 24000, 26000, 21000, 85000,
+      ];
+
+      new Chart(document.getElementById("earningsChart"), {
+        type: "line",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: "أرباح (EGP)",
+              data: earningsData,
+              tension: 0.3,
+              fill: true,
+              backgroundColor: "rgba(59,130,246,0.12)",
+              borderColor: "rgba(59,130,246,0.95)",
+              pointRadius: 3,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } },
+        },
+      });
+
+      new Chart(document.getElementById("usersChart"), {
+        type: "doughnut",
+        data: {
+          labels: ["طلاب", "معلمين", "أولياء أمور"],
+          datasets: [
+            {
+              data: [70, 25, 5],
+              backgroundColor: ["#3B82F6", "#10B981", "#F59E0B"],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { position: "bottom" } },
+        },
+      });
+    </script>
+  </body>
+</html>
